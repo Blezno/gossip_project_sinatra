@@ -1,8 +1,4 @@
 
-require 'bundler'
-Bundler.require
-
-$:.unshift File.expand_path("./../lib", __FILE__)
 require 'gossip'
 
 class ApplicationController < Sinatra::Base
@@ -24,9 +20,5 @@ class ApplicationController < Sinatra::Base
     erb :show, locals: {gossip: Gossip.find(params['id'].to_i), id:params['id']}
   end
 
-  get '/gossips/:id/edit/' do
-    Gossip.update("#{params['new_author']}","#{params['new_content']}","#{params['updated_id']}" )
-    redirect'/'
-  end
 
 end
